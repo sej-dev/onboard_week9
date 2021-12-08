@@ -5,31 +5,15 @@
 
   <div class="container">
     <flex-conatiner>
-      <timeline-chart-list />
+      <timeline-charts-area />
     </flex-conatiner>
 
     <flex-conatiner>
-      <status-card-list />
+      <status-cards-area />
     </flex-conatiner>
 
     <flex-conatiner>
-      <overlay-header-card>
-        <template #main>
-          <list-table />
-        </template>
-      </overlay-header-card>
-
-      <overlay-header-card>
-        <template #header>
-          Tasks:
-          <button>BUGS</button>
-          <button>WEBSITE</button>
-          <button>SERVER</button>
-        </template>
-        <template #main>
-          <list-table />
-        </template>
-      </overlay-header-card>
+      <list-tables-area />
     </flex-conatiner>
   </div>
 </template>
@@ -37,22 +21,20 @@
 <script>
 import TheHeader from '../../components/layout/TheHeader.vue';
 import TheSideNavbar from '../../components/layout/TheSideNavbar.vue';
-import OverlayHeaderCard from '../../components/OverlayHeaderCard.vue';
 
 import FlexConatiner from '../../components/layout/container/FlexConatiner.vue';
-import TimelineChartList from '../dashboard/TimelineChartList.vue';
-import StatusCardList from '../dashboard/StatusCardList.vue';
-import ListTable from '../../components/ListTable.vue';
+import TimelineChartsArea from '../dashboard/TimelineChartsArea.vue';
+import StatusCardsArea from '../dashboard/StatusCardsArea.vue';
+import ListTablesArea from '../dashboard/ListTablesArea.vue';
 
 export default {
   components: {
     TheHeader,
     TheSideNavbar,
-    OverlayHeaderCard,
     FlexConatiner,
-    TimelineChartList,
-    StatusCardList,
-    ListTable,
+    TimelineChartsArea,
+    StatusCardsArea,
+    ListTablesArea,
   },
   name: 'DashBoard',
   setup() {

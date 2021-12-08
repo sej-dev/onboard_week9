@@ -19,21 +19,7 @@ import TimelineChart from '../../components/TimelineChart.vue';
 import dayjs from 'dayjs';
 const time = dayjs().format('YYYY-MM-DD HH:mm:ss');
 
-import { h } from 'vue';
-
-// const Main = createApp({
-//   render(){
-//     return (
-//       <div>
-//         <h4>Daily Sales</h4>
-//         <p>
-//           <span> 55%</span>
-//           increase in today sales.
-//         </p>
-//       </div>
-//     );
-//   }
-// })
+import functionalComponent from '@/utils/functionalComponent.js';
 
 const timelineCharts = [
   {
@@ -55,8 +41,16 @@ const timelineCharts = [
         return day;
       },
     },
-    Main: h('div', null, [h('h4', null, 'Daily Sales')]),
-    Footer: h('div', 'updated 4 minutes ago'),
+    Main: functionalComponent(
+      <div>
+        <h4>Daily Sales</h4>
+        <p>
+          <span> 55%</span>
+          increase in today sales.
+        </p>
+      </div>
+    ),
+    Footer: functionalComponent(<div>updated 4 minutes ago</div>),
   },
   {
     key: 'EmailSubscription',
@@ -77,8 +71,13 @@ const timelineCharts = [
         return day;
       },
     },
-    Main: h('div', null, [h('h4', null, 'Email Subscription')]),
-    Footer: h('div', ' updated 10 days ago'),
+    Main: functionalComponent(
+      <div>
+        <h4>Email Subscription</h4>
+        <p>Last Campaign Performance</p>
+      </div>
+    ),
+    Footer: functionalComponent(<div>updated 10 days ago</div>),
   },
   {
     key: 'CompletedTasks',
@@ -100,8 +99,13 @@ const timelineCharts = [
         return day;
       },
     },
-    Main: h('div', null, [h('h4', null, 'Completed Tasks')]),
-    Footer: h('div', 'campaign sent 26 minutes ago'),
+    Main: functionalComponent(
+      <div>
+        <h4>Completed Tasks</h4>
+        <p>Last Campaign Performance</p>
+      </div>
+    ),
+    Footer: functionalComponent(<div>campaign sent 26 minutes ago</div>),
   },
 ];
 

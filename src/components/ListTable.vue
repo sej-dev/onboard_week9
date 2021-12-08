@@ -14,6 +14,10 @@
       },
     }"
   >
+    <template>
+      <ev-checkbox />
+    </template>
+    <template> </template>
   </ev-grid>
 </template>
 
@@ -21,31 +25,29 @@
 import { ref } from 'vue';
 export default {
   name: 'DataTable',
-  setup() {
-    const tableData = ref([
-      ['1', '2', '3', '4', '5', '6'],
-      ['1', '2', '3', '4', '5', '6'],
-      ['1', '2', '3', '4', '5', '6'],
-      ['1', '2', '3', '4', '5', '6'],
-    ]);
+  props: {
+    tableData: {
+      type: Array,
+    },
+    columns: {
+      type: Array,
+    },
+  },
+  setup(props) {
+    // TODO: 변동
+    const tableData1 = ref(props.tableData);
     const widthMV = ref('100%');
     const heightMV = ref('100%');
     const adjustMV = ref(true);
     const rowHeightMV = ref(45);
     const columnWidthMV = ref(80);
     const borderMV = ref('none');
-    const columns = ref([
-      { caption: '', field: 'user-icon', type: 'string' },
-      { caption: 'Name', field: 'userName', type: 'string', width: 80 },
-      { caption: 'Role', field: 'role', type: 'string' },
-      { caption: 'Phone', field: 'phone', type: 'string' },
-      { caption: 'Email', field: 'email', type: 'string' },
-      { caption: 'Last Login', field: 'lastLogin', type: 'string' },
-    ]);
+    // TODO: 변동
+    const columns1 = ref(props.columns);
 
     return {
-      columns,
-      tableData,
+      tableData1,
+      columns1,
       widthMV,
       heightMV,
       adjustMV,
