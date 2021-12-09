@@ -1,5 +1,5 @@
 <template>
-  <overlay-header-card class="overlay-header-card" v-for="statusCard in statusCards" :style="statusCard.style" :key="statusCard.key">
+  <overlay-header-card class="overlay-header-card" v-for="statusCard in statusCards" :header="statusCard.header" :key="statusCard.key">
     <template #header>
       <ev-icon class="header-icon" :icon="statusCard.icon" size="large" />
     </template>
@@ -22,12 +22,13 @@ import functionalComponent from '@/utils/functionalComponent.js';
 const statusCards = [
   {
     key: 'Revenue',
-    style: {
-      header: {
-        backgroundColor: '#43a047',
-        minHeight: '70px',
-      },
+
+    header: {
+      backgroundColor: '#43a047',
+      width: '30%',
+      position: 'left',
     },
+
     icon: 'ev-icon-spark',
     Main: functionalComponent(
       <div class="main-content">
@@ -40,11 +41,13 @@ const statusCards = [
   },
   {
     key: 'UsedSpace',
-    style: {
-      header: {
-        backgroundColor: '#fc9309',
-      },
+
+    header: {
+      backgroundColor: '#fc9309',
+      width: '30%',
+      position: 'left',
     },
+
     icon: 'ev-icon-spark',
     Main: functionalComponent(
       <div class="main-content">
@@ -59,11 +62,13 @@ const statusCards = [
   },
   {
     key: 'Revenue',
-    style: {
-      header: {
-        backgroundColor: '#e9423e',
-      },
+
+    header: {
+      backgroundColor: '#e9423e',
+      width: '30%',
+      position: 'left',
     },
+
     icon: 'ev-icon-spark',
     Main: functionalComponent(
       <div class="main-content">
@@ -76,11 +81,13 @@ const statusCards = [
   },
   {
     key: 'Revenue',
-    style: {
-      header: {
-        backgroundColor: '#0db5ca',
-      },
+
+    header: {
+      backgroundColor: '#0db5ca',
+      width: '30%',
+      position: 'left',
     },
+
     icon: 'ev-icon-spark',
     Main: functionalComponent(
       <div class="main-content">
@@ -108,16 +115,20 @@ export default {
 
 <style lang="scss" scoped>
 .overlay-header-card {
+  width: 20%;
+
   .header {
     min-height: 70px;
 
     .header-icon {
+      font-size: 36px !important;
+      line-height: 56px;
+      width: 56px;
+      height: 56px;
+
       display: flex;
       justify-content: center;
       align-items: center;
-
-      height: 100%;
-      width: 100%;
     }
   }
 

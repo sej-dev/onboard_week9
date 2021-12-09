@@ -1,10 +1,10 @@
 <template>
-  <side-nav-layout>
+  <left-side-nav-layout>
     <template #header>User Profile</template>
 
     <template #main>
       <flex-conatiner>
-        <overlay-header-card>
+        <overlay-header-card class="overlay-header-card">
           <template #header>
             <h4 class="title">Edit Profile</h4>
             <p class="category">Complete your profile</p>
@@ -25,9 +25,9 @@
           </template>
         </overlay-header-card>
 
-        <overlay-header-card>
+        <overlay-header-card class="overlay-header-card" :header="businessCard.header">
           <template #header>
-            <img src="https://demos.creative-tim.com/vue-material-dashboard/img/marc.aba54d65.jpg" />
+            <img class="header-img" src="https://demos.creative-tim.com/vue-material-dashboard/img/marc.aba54d65.jpg" />
           </template>
 
           <template #main>
@@ -44,25 +44,45 @@
         </overlay-header-card>
       </flex-conatiner>
     </template>
-  </side-nav-layout>
+  </left-side-nav-layout>
 </template>
 
 <script>
-import FlexConatiner from '@/components/layout/container/FlexConatiner.vue';
-import SideNavLayout from '@/components/layout/SideNavLayout.vue';
+import FlexConatiner from '@/components/container/FlexConatiner.vue';
+import LeftSideNavLayout from '@/components/layout/page/LeftSideNavLayout.vue';
 import OverlayHeaderCard from '@/components/OverlayHeaderCard.vue';
+
+const businessCard = {
+  header: {
+    backgroundColor: 'transparent',
+    width: '130px',
+  },
+};
 
 export default {
   components: {
     FlexConatiner,
-    SideNavLayout,
+    LeftSideNavLayout,
     OverlayHeaderCard,
   },
   name: 'UserProfilePage',
   setup() {
-    return {};
+    return {
+      businessCard,
+    };
   },
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.overlay-header-card {
+  width: 40%;
+
+  .header-img {
+    max-width: 130px;
+    max-height: 130px;
+    border-radius: 50%;
+    margin-top: -20px;
+  }
+}
+</style>

@@ -1,5 +1,5 @@
 <template>
-  <side-nav-layout>
+  <left-side-nav-layout>
     <template #header> Dashboard </template>
 
     <template #main>
@@ -15,15 +15,16 @@
         <list-tables-area />
       </flex-conatiner>
     </template>
-  </side-nav-layout>
+  </left-side-nav-layout>
 </template>
 
 <script>
-import FlexConatiner from '../../components/layout/container/FlexConatiner.vue';
-import TimelineChartsArea from '../dashboard/TimelineChartsArea.vue';
-import StatusCardsArea from '../dashboard/StatusCardsArea.vue';
-import ListTablesArea from '../dashboard/ListTablesArea.vue';
-import SideNavLayout from '../../components/layout/SideNavLayout.vue';
+import LeftSideNavLayout from '@/components/layout/page/LeftSideNavLayout.vue';
+import FlexConatiner from '@/components/container/FlexConatiner.vue';
+
+import TimelineChartsArea from '@/views/dashboard/TimelineChartsArea.vue';
+import StatusCardsArea from '@/views/dashboard/StatusCardsArea.vue';
+import ListTablesArea from '@/views/dashboard/ListTablesArea.vue';
 
 export default {
   components: {
@@ -31,12 +32,9 @@ export default {
     TimelineChartsArea,
     StatusCardsArea,
     ListTablesArea,
-    SideNavLayout,
+    LeftSideNavLayout,
   },
   name: 'DashBoardPage',
-  setup() {
-    return {};
-  },
 };
 </script>
 

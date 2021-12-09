@@ -1,19 +1,5 @@
 <template>
-  <ev-grid
-    :columns="column"
-    :rows="tableData"
-    :width="widthMV"
-    :height="heightMV"
-    :option="{
-      adjust: adjustMV,
-      rowHeight: rowHeightMV,
-      columnWidth: columnWidthMV,
-      showHeader: false,
-      style: {
-        border: 'none',
-      },
-    }"
-  >
+  <ev-grid :columns="column" :rows="tableData" :option="options">
     <template>
       <ev-checkbox />
     </template>
@@ -27,35 +13,39 @@ export default {
   props: {
     datas: {
       type: Array,
+      default() {
+        return [];
+      },
     },
     columns: {
       type: Array,
+      default() {
+        return [];
+      },
     },
   },
   setup(props) {
     // TODO: 변동
     const tableData = ref(props.datas);
-    const widthMV = ref('100%');
-    const heightMV = ref('100%');
-    const adjustMV = ref(true);
-    const rowHeightMV = ref(45);
-    const columnWidthMV = ref(80);
-    const borderMV = ref('none');
     // TODO: 변동
     const column = ref(props.columns);
+
+    const options = {
+      adjust: true,
+      rowHeight: 50,
+      showHeader: true,
+      style: {
+        border: 'none',
+      },
+    };
 
     return {
       tableData,
       column,
-      widthMV,
-      heightMV,
-      adjustMV,
-      rowHeightMV,
-      columnWidthMV,
-      borderMV,
+      options,
     };
   },
 };
 </script>
 
-<style></style>
+<style lang="scss"></style>

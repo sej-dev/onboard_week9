@@ -1,9 +1,7 @@
 <template>
-  <overlay-header-card class="overlay-header-card" v-for="card in cards" :key="card.key" :style="card.style">
+  <overlay-header-card class="overlay-header-card" v-for="card in cards" :key="card.key" :header="card.header">
     <template #header>
-      <div class="timeline-chart-container">
-        <timeline-chart v-bind="card.chartOptions" />
-      </div>
+      <timeline-chart v-bind="card.chartOptions" />
     </template>
 
     <template #main>
@@ -17,8 +15,8 @@
 </template>
 
 <script>
-import OverlayHeaderCard from '../../components/OverlayHeaderCard.vue';
-import TimelineChart from '../../components/TimelineChart.vue';
+import OverlayHeaderCard from '@/components/OverlayHeaderCard.vue';
+import TimelineChart from '@/components/TimelineChart.vue';
 
 import dayjs from 'dayjs';
 const time = dayjs().format('YYYY-MM-DD HH:mm:ss');
@@ -28,10 +26,8 @@ import functionalComponent from '@/utils/functionalComponent.js';
 const cards = [
   {
     key: 'DailySales',
-    style: {
-      header: {
-        backgroundColor: '#1dc0d4',
-      },
+    header: {
+      backgroundColor: '#1dc0d4',
     },
     chartOptions: {
       type: 'line',
@@ -63,10 +59,8 @@ const cards = [
   },
   {
     key: 'EmailSubscription',
-    style: {
-      header: {
-        backgroundColor: '#ee524f',
-      },
+    header: {
+      backgroundColor: '#ee524f',
     },
     chartOptions: {
       type: 'bar',
@@ -101,10 +95,8 @@ const cards = [
   },
   {
     key: 'CompletedTasks',
-    style: {
-      header: {
-        backgroundColor: '#63b967',
-      },
+    header: {
+      backgroundColor: '#63b967',
     },
     chartOptions: {
       type: 'line',
@@ -149,10 +141,6 @@ export default {
 <style lang="scss" scoped>
 .overlay-header-card {
   width: 30%;
-
-  .timeline-chart-container {
-    width: 95%;
-  }
 
   :deep(.main-content) {
     .title {

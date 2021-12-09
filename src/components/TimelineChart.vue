@@ -5,27 +5,37 @@
 <script>
 import { computed, reactive } from 'vue';
 
+const THEME_COLOR = '#ffffff';
+
 export default {
   name: 'Chart',
   props: {
     type: {
       required: true,
       type: String,
-      validator: function (value) {
+      validator(value) {
         return ['line', 'bar'].includes(value);
       },
     },
     labels: {
       type: Array,
+      default() {
+        return [];
+      },
     },
     data: {
       type: Array,
+      default() {
+        return [];
+      },
     },
     interval: {
       type: String,
+      required: true,
     },
     formatter: {
       type: Function,
+      required: true,
     },
   },
   setup(props) {
@@ -33,8 +43,8 @@ export default {
       series: {
         series1: {
           showLegend: false,
-          color: '#ffffff',
-          fillColor: '#ffffff',
+          color: THEME_COLOR,
+          fillColor: THEME_COLOR,
         },
       },
       // TODO: 변동
@@ -58,8 +68,7 @@ export default {
 
     const chartOptions = reactive({
       type: props.type,
-      width: '100%',
-      height: '100%',
+
       tooltip: {
         use: false,
       },
@@ -74,10 +83,10 @@ export default {
           interval: props.interval,
           // TODO: 변동
           formatter: props.formatter,
-          axisLineColor: '#ffffff',
-          gridLineColor: '#ffffff',
+          axisLineColor: THEME_COLOR,
+          gridLineColor: THEME_COLOR,
           labelStyle: {
-            color: '#ffffff',
+            color: THEME_COLOR,
           },
         },
       ],
@@ -86,15 +95,15 @@ export default {
           type: 'linear',
           showGrid: true,
           startToZero: true,
-          axisLineColor: '#ffffff',
-          gridLineColor: '#ffffff',
+          axisLineColor: THEME_COLOR,
+          gridLineColor: THEME_COLOR,
           labelStyle: {
-            color: '#ffffff',
+            color: THEME_COLOR,
           },
         },
       ],
       labelStyle: {
-        color: '#ffffff',
+        color: THEME_COLOR,
       },
     });
 

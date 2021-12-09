@@ -1,6 +1,5 @@
-export default function functionalComponent(jsx, components) {
+export default function functionalComponent(jsx) {
   return {
-    components,
     render() {
       return jsx;
     },

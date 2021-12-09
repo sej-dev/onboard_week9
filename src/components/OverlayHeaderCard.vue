@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <div class="header">
+    <div class="header" :style="headerStyle">
       <slot name="header" />
     </div>
 
@@ -15,30 +15,65 @@
 </template>
 
 <script>
+import { computed } from 'vue';
+
 /**
- * TODO:
  * header 옵션
  * - position: left, right, center,
- * - size:
- * - shape: square, circle
+ * - width:
  */
 export default {
   name: 'OverlayHeaderCard',
   props: {
-    style: {
+    header: {
       type: Object,
       default() {
         return {};
       },
     },
-  },
-  setup(props) {
-    return {
-      colors: {
-        header: {
-          backgroundColor: props.style.header?.backgroundColor,
-        },
+    /*
+    position: {
+      type: String,
+      validator(value) {
+        return ['left', 'right', 'center'].includes(value);
       },
+      default() {
+        return 'center';
+      },
+    },
+    width: {
+      type: String,
+      default() {
+        return '';
+      },
+    },
+    */
+  },
+
+  setup(props) {
+    const headerStyleProps = computed(() => ({
+      position: 'center',
+      width: '',
+      backgroundColor: 'black',
+      ...props.header,
+    }));
+
+    const headerStyle = computed(() => {
+      const position = {
+        left: { float: 'left' },
+        right: { float: 'right' },
+        center: { marginLeft: 'auto', marginRight: 'auto' },
+      };
+
+      return {
+        ...position[headerStyleProps.value.position],
+        width: headerStyleProps.value.width,
+        backgroundColor: headerStyleProps.value.backgroundColor,
+      };
+    });
+
+    return {
+      headerStyle,
     };
   },
 };
@@ -54,9 +89,10 @@ export default {
   padding-left: 15px;
 
   .header {
-    margin: -20px 15px 0;
-    background-color: v-bind('colors.header.backgroundColor');
+    margin-top: -20px;
     color: #ffffff;
+
+    padding: 15px;
   }
 
   .main {
