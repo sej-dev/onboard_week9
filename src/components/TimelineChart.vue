@@ -3,11 +3,18 @@
 </template>
 
 <script>
-import { reactive } from 'vue';
+import { computed, reactive } from 'vue';
 
 export default {
   name: 'Chart',
   props: {
+    type: {
+      required: true,
+      type: String,
+      validator: function (value) {
+        return ['line', 'bar'].includes(value);
+      },
+    },
     labels: {
       type: Array,
     },
@@ -37,8 +44,20 @@ export default {
         series1: props.data,
       },
     });
+
+    const axesXType = computed(() => {
+      switch (props.type) {
+        case 'line':
+          return 'time';
+        case 'bar':
+          return 'step';
+        default:
+          return '';
+      }
+    });
+
     const chartOptions = reactive({
-      type: 'line',
+      type: props.type,
       width: '100%',
       height: '100%',
       tooltip: {
@@ -49,7 +68,7 @@ export default {
       },
       axesX: [
         {
-          type: 'time',
+          type: axesXType,
           showGrid: true,
           // TODO: 변동
           interval: props.interval,

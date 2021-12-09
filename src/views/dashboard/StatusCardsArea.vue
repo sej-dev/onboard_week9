@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import OverlayHeaderCard from '../../components/OverlayHeaderCard.vue';
+import OverlayHeaderCard from '@/components/OverlayHeaderCard.vue';
 
 import functionalComponent from '@/utils/functionalComponent.js';
 

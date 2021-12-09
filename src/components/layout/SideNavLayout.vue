@@ -32,7 +32,6 @@ export default {
 
   display: inline-block;
   width: 260px;
-  height: 100%;
 }
 .panel-right {
   padding: 25px;

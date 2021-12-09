@@ -33,7 +33,7 @@ export default {
     ListTablesArea,
     SideNavLayout,
   },
-  name: 'DashBoard',
+  name: 'DashBoardPage',
   setup() {
     return {};
   },

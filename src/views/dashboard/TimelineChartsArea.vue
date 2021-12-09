@@ -1,7 +1,9 @@
 <template>
   <overlay-header-card class="overlay-header-card" v-for="card in cards" :key="card.key" :style="card.style">
     <template #header>
-      <timeline-chart v-bind="card.chartOptions" />
+      <div class="timeline-chart-container">
+        <timeline-chart v-bind="card.chartOptions" />
+      </div>
     </template>
 
     <template #main>
@@ -32,6 +34,7 @@ const cards = [
       },
     },
     chartOptions: {
+      type: 'line',
       labels: [
         dayjs(time).subtract(6, 'day'),
         dayjs(time).subtract(5, 'day'),
@@ -49,11 +52,10 @@ const cards = [
       },
     },
     Main: functionalComponent(
-      <div>
-        <h4>Daily Sales</h4>
-        <p>
-          <span> 55%</span>
-          increase in today sales.
+      <div class="main-content">
+        <h4 class="title">Daily Sales</h4>
+        <p class="description">
+          <span style={{ color: '#4caf50' }}>55%</span> increase in today sales.
         </p>
       </div>
     ),
@@ -67,7 +69,13 @@ const cards = [
       },
     },
     chartOptions: {
+      type: 'bar',
       labels: [
+        dayjs(time).subtract(11, 'month'),
+        dayjs(time).subtract(10, 'month'),
+        dayjs(time).subtract(9, 'month'),
+        dayjs(time).subtract(8, 'month'),
+        dayjs(time).subtract(7, 'month'),
         dayjs(time).subtract(6, 'month'),
         dayjs(time).subtract(5, 'month'),
         dayjs(time).subtract(4, 'month'),
@@ -76,7 +84,7 @@ const cards = [
         dayjs(time).subtract(1, 'month'),
         dayjs(time),
       ],
-      data: [2, 4, 8, 1, 4, 7, 4],
+      data: [2, 4, 8, 1, 4, 7, 4, 1, 5, 8, 22, 1],
       interval: 'month',
       formatter: (value) => {
         const day = dayjs(value).format('MMM').substring(0, 2).toUpperCase();
@@ -84,9 +92,9 @@ const cards = [
       },
     },
     Main: functionalComponent(
-      <div>
-        <h4>Email Subscription</h4>
-        <p>Last Campaign Performance</p>
+      <div class="main-content">
+        <h4 class="title">Email Subscription</h4>
+        <p class="description">Last Campaign Performance</p>
       </div>
     ),
     Footer: functionalComponent(<div>updated 10 days ago</div>),
@@ -99,6 +107,7 @@ const cards = [
       },
     },
     chartOptions: {
+      type: 'line',
       labels: [
         dayjs(time).subtract(21, 'hour'),
         dayjs(time).subtract(18, 'hour'),
@@ -117,9 +126,9 @@ const cards = [
       },
     },
     Main: functionalComponent(
-      <div>
-        <h4>Completed Tasks</h4>
-        <p>Last Campaign Performance</p>
+      <div class="main-content">
+        <h4 class="title">Completed Tasks</h4>
+        <p class="description">Last Campaign Performance</p>
       </div>
     ),
     Footer: functionalComponent(<div>campaign sent 26 minutes ago</div>),
@@ -137,8 +146,23 @@ export default {
 };
 </script>
 
-<style scoped lang="scss">
+<style lang="scss">
 .overlay-header-card {
   width: 30%;
+
+  .timeline-chart-container {
+    width: 95%;
+  }
+
+  .main-content {
+    .title {
+      color: black;
+      margin-bottom: 10px;
+    }
+
+    .description {
+      font-size: 14px;
+    }
+  }
 }
 </style>

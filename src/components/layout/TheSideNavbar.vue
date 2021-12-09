@@ -1,6 +1,13 @@
 <template>
-  <p>VUE MD</p>
-  <ev-menu v-model="menu" :items="menuItems" @change="onMenuChange" />
+  <div class="side-nav">
+    <div class="logo-coantiner">
+      <div class="logo-box">
+        <img src="https://demos.creative-tim.com/vue-material-dashboard/img/vue-logo.c2a605fb.png" alt="" />
+      </div>
+      <span class="logo-name">VUE MD</span>
+    </div>
+    <ev-menu v-model="menu" :items="menuItems" @change="onMenuChange" />
+  </div>
 </template>
 
 <script>
@@ -17,43 +24,43 @@ export default {
         text: 'Dashoboard',
         value: 'Dashoboard',
         routeName: 'Dashboard',
-        //iconClass: '',
+        iconClass: 'ev-icon-spark',
       },
       {
         text: 'User Profile',
         value: 'UserProfile',
         routeName: 'UserProfile',
-        //iconClass: '',
+        iconClass: 'ev-icon-spark',
       },
       {
         text: 'Table List',
         value: 'TableList',
-        //iconClass: '',
+        iconClass: 'ev-icon-spark',
       },
       {
         text: 'Typography',
         value: 'Typography',
-        //iconClass: '',
+        iconClass: 'ev-icon-spark',
       },
       {
         text: 'Icons',
         value: 'Icons',
-        //iconClass: '',
+        iconClass: 'ev-icon-spark',
       },
       {
         text: 'Maps',
         value: 'Maps',
-        //iconClass: '',
+        iconClass: 'ev-icon-spark',
       },
       {
         text: 'Notifications',
         value: 'Notifications',
-        //iconClass: '',
+        iconClass: 'ev-icon-spark',
       },
       {
         text: 'Upgrade To PRO',
         value: 'UpgradeToPRO',
-        //iconClass: '',
+        iconClass: 'ev-icon-spark',
       },
     ]);
 
@@ -76,4 +83,42 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.side-nav {
+  padding: 20px;
+
+  .logo-coantiner {
+    display: flex;
+
+    font-size: 18px;
+    font-weight: 400;
+
+    margin-bottom: 20px;
+
+    .logo-box {
+      width: 40px;
+      height: 40px;
+      background-color: #ffffff;
+
+      border-radius: 50%;
+      text-align: center;
+
+      img {
+        width: 55%;
+        vertical-align: baseline;
+      }
+    }
+
+    .logo-name {
+      line-height: 40px;
+      margin-left: 10px;
+    }
+  }
+
+  .ev-menu-item {
+    .ev-menu-title span {
+      margin-left: 10px;
+    }
+  }
+}
+</style>

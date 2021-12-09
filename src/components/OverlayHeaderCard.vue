@@ -15,6 +15,13 @@
 </template>
 
 <script>
+/**
+ * TODO:
+ * header 옵션
+ * - position: left, right, center,
+ * - size:
+ * - shape: square, circle
+ */
 export default {
   name: 'OverlayHeaderCard',
   props: {
@@ -58,7 +65,7 @@ export default {
 
   .footer {
     margin: 0 20px 10px;
-    padding: 10px 0 0 0;
+    padding: 10px 0 10px 0;
     border-top: 1px solid #eee;
 
     font-size: 12px;
