@@ -1,11 +1,12 @@
 <template>
   <div class="flex-container">
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
 <script>
 export default {
+  name: 'FlexContainer',
   props: {
     direction: {
       type: String,
@@ -17,7 +18,6 @@ export default {
       },
     },
   },
-  name: 'FlexContainer',
   setup(props) {
     return {
       flexDirection: props.direction,

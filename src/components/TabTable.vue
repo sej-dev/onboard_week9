@@ -1,5 +1,9 @@
 <template>
-  <ev-grid :columns="column" :rows="tableData" :option="options"> </ev-grid>
+  <ev-grid
+    :columns="column"
+    :rows="tableData"
+    :option="options"
+  />
 </template>
 
 <script>
@@ -10,9 +14,15 @@ export default {
   props: {
     datas: {
       type: Array,
+      default() {
+        return [];
+      },
     },
     columns: {
       type: Array,
+      default() {
+        return [];
+      },
     },
     useCheckbox: {
       type: Boolean,

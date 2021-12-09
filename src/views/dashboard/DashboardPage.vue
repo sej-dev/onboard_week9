@@ -1,6 +1,8 @@
 <template>
   <left-side-nav-layout>
-    <template #header> Dashboard </template>
+    <template #header>
+      Dashboard
+    </template>
 
     <template #main>
       <flex-conatiner>
@@ -27,6 +29,7 @@ import StatusCardsArea from '@/views/dashboard/StatusCardsArea.vue';
 import ListTablesArea from '@/views/dashboard/ListTablesArea.vue';
 
 export default {
+  name: 'DashBoardPage',
   components: {
     FlexConatiner,
     TimelineChartsArea,
@@ -34,7 +37,6 @@ export default {
     ListTablesArea,
     LeftSideNavLayout,
   },
-  name: 'DashBoardPage',
 };
 </script>
 

@@ -1,5 +1,8 @@
 <template>
-  <overlay-header-card class="overlay-header-card" :header="{ backgroundColor: '#fd9d19' }">
+  <overlay-header-card
+    class="overlay-header-card"
+    :header="{ backgroundColor: '#fd9d19' }"
+  >
     <template #header>
       <div>
         <h4>Employees Stats</h4>
@@ -7,25 +10,51 @@
       </div>
     </template>
     <template #main>
-      <data-table v-bind="dataTable" :useCheckbox="true" />
+      <data-table
+        v-bind="dataTable"
+        :use-checkbox="true"
+      />
     </template>
   </overlay-header-card>
 
-  <overlay-header-card class="overlay-header-card" :header="{ backgroundColor: '#5cb360' }">
+  <overlay-header-card
+    class="overlay-header-card"
+    :header="{ backgroundColor: '#5cb360' }"
+  >
     <template #header>
-      <ul @click="onTabClick" class="tab-names">
+      <ul
+        class="tab-names"
+        @click="onTabClick"
+      >
         <li class="tab-button">
-          <ev-button type="text">Tasks:</ev-button>
+          <ev-button type="text">
+            Tasks:
+          </ev-button>
         </li>
-        <li v-for="sectionName in tabs.sectionNames" :key="sectionName" class="tab-button">
-          <ev-button :data-tab="sectionName" type="text"> {{ sectionName.toUpperCase() }} </ev-button>
+        <li
+          v-for="sectionName in tabs.sectionNames"
+          :key="sectionName"
+          class="tab-button"
+        >
+          <ev-button
+            :data-tab="sectionName"
+            type="text"
+          >
+            {{ sectionName.toUpperCase() }}
+          </ev-button>
         </li>
       </ul>
     </template>
     <template #main>
-      <template v-for="section in tabs.sections" :key="section.name">
+      <template
+        v-for="section in tabs.sections"
+        :key="section.name"
+      >
         <keep-alive>
-          <tab-table v-if="activeTabSection === section.name" v-bind="section" />
+          <tab-table
+            v-if="activeTabSection === section.name"
+            v-bind="section"
+          />
         </keep-alive>
       </template>
     </template>
@@ -95,8 +124,8 @@ const tabs = {
 };
 
 export default {
-  components: { OverlayHeaderCard, DataTable, TabTable },
   name: 'ListTablesArea',
+  components: { OverlayHeaderCard, DataTable, TabTable },
   setup() {
     const activeTabSection = ref(tabs.sectionNames[0]);
 

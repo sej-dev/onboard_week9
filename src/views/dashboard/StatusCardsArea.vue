@@ -1,7 +1,16 @@
 <template>
-  <overlay-header-card class="overlay-header-card" v-for="statusCard in statusCards" :header="statusCard.header" :key="statusCard.key">
+  <overlay-header-card
+    v-for="statusCard in statusCards"
+    :key="statusCard.key"
+    class="overlay-header-card"
+    :header="statusCard.header"
+  >
     <template #header>
-      <ev-icon class="header-icon" :icon="statusCard.icon" size="large" />
+      <ev-icon
+        class="header-icon"
+        :icon="statusCard.icon"
+        size="large"
+      />
     </template>
 
     <template #main>

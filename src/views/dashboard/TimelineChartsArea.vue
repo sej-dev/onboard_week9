@@ -1,5 +1,10 @@
 <template>
-  <overlay-header-card class="overlay-header-card" v-for="card in cards" :key="card.key" :header="card.header">
+  <overlay-header-card
+    v-for="card in cards"
+    :key="card.key"
+    class="overlay-header-card"
+    :header="card.header"
+  >
     <template #header>
       <timeline-chart v-bind="card.chartOptions" />
     </template>
