@@ -30,10 +30,10 @@ const statusCards = [
     },
     icon: 'ev-icon-spark',
     Main: functionalComponent(
-      <div>
-        <span>Revenue</span>
+      <div class="main-content">
+        <span class="name">Revenue</span>
         <br />
-        <span>$34,245</span>
+        <span class="status">$34,245</span>
       </div>
     ),
     Footer: functionalComponent(<div>Last 24 Hours</div>),
@@ -47,15 +47,15 @@ const statusCards = [
     },
     icon: 'ev-icon-spark',
     Main: functionalComponent(
-      <div>
-        <span>Revenue</span>
+      <div class="main-content">
+        <span class="name">Revenue</span>
         <br />
-        <span>
+        <span class="status">
           49/50<small>GB</small>
         </span>
       </div>
     ),
-    Footer: functionalComponent(<div>Get More Space...</div>),
+    Footer: functionalComponent(<div style={{ color: '#9c27b0' }}>Get More Space...</div>),
   },
   {
     key: 'Revenue',
@@ -66,10 +66,10 @@ const statusCards = [
     },
     icon: 'ev-icon-spark',
     Main: functionalComponent(
-      <div>
-        <span>Fixed Issues</span>
+      <div class="main-content">
+        <span class="name">Fixed Issues</span>
         <br />
-        <span>75</span>
+        <span class="status">75</span>
       </div>
     ),
     Footer: functionalComponent(<div>Tracked from Github</div>),
@@ -83,10 +83,10 @@ const statusCards = [
     },
     icon: 'ev-icon-spark',
     Main: functionalComponent(
-      <div>
-        <span>Folowers</span>
+      <div class="main-content">
+        <span class="name">Folowers</span>
         <br />
-        <span>+245</span>
+        <span class="status">+245</span>
       </div>
     ),
     Footer: functionalComponent(<div> Just Updated</div>),
@@ -106,7 +106,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .overlay-header-card {
   .header {
     min-height: 70px;
@@ -118,6 +118,20 @@ export default {
 
       height: 100%;
       width: 100%;
+    }
+  }
+
+  :deep(.main-content) {
+    text-align: right;
+
+    .name {
+      font-size: 14px;
+    }
+
+    .status {
+      color: black;
+      font-size: 1.5625rem;
+      font-weight: 300;
     }
   }
 }

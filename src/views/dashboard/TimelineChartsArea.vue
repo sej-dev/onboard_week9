@@ -146,7 +146,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .overlay-header-card {
   width: 30%;
 
@@ -154,7 +154,7 @@ export default {
     width: 95%;
   }
 
-  .main-content {
+  :deep(.main-content) {
     .title {
       color: black;
       margin-bottom: 10px;
