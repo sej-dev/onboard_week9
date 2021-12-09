@@ -1,6 +1,6 @@
 <template>
   <ev-grid
-    :columns="columns"
+    :columns="column"
     :rows="tableData"
     :width="widthMV"
     :height="heightMV"
@@ -17,7 +17,6 @@
     <template>
       <ev-checkbox />
     </template>
-    <template> </template>
   </ev-grid>
 </template>
 
@@ -26,7 +25,7 @@ import { ref } from 'vue';
 export default {
   name: 'DataTable',
   props: {
-    tableData: {
+    datas: {
       type: Array,
     },
     columns: {
@@ -35,7 +34,7 @@ export default {
   },
   setup(props) {
     // TODO: 변동
-    const tableData1 = ref(props.tableData);
+    const tableData = ref(props.datas);
     const widthMV = ref('100%');
     const heightMV = ref('100%');
     const adjustMV = ref(true);
@@ -43,11 +42,11 @@ export default {
     const columnWidthMV = ref(80);
     const borderMV = ref('none');
     // TODO: 변동
-    const columns1 = ref(props.columns);
+    const column = ref(props.columns);
 
     return {
-      tableData1,
-      columns1,
+      tableData,
+      column,
       widthMV,
       heightMV,
       adjustMV,

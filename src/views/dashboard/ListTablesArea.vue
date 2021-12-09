@@ -1,5 +1,5 @@
 <template>
-  <overlay-header-card>
+  <overlay-header-card :style="{ header: { backgroundColor: '#fd9d19' } }">
     <template #header>
       <div>
         <h4>Employees Stats</h4>
@@ -7,30 +7,36 @@
       </div>
     </template>
     <template #main>
-      <list-table v-bind="dataTableOptions" />
+      <data-table v-bind="dataTable" :useCheckbox="true" />
     </template>
   </overlay-header-card>
 
-  <overlay-header-card>
+  <overlay-header-card :style="{ header: { backgroundColor: '#5cb360' } }">
     <template #header>
       Tasks:
-      <button>BUGS</button>
-      <button>WEBSITE</button>
-      <button>SERVER</button>
+      <ul @click="onTabClick">
+        <li v-for="sectionName in tabs.sectionNames" :key="sectionName" :data-tab="sectionName" class="tab-button">
+          <ev-button type="text"> {{ sectionName.toUpperCase() }} </ev-button>
+        </li>
+      </ul>
     </template>
     <template #main>
-      <list-table v-bind="listTableOptions" />
+      <template v-for="section in tabs.sections" :key="section.name">
+        <tab-table v-if="activeTabSection === section.name" v-bind="section" />
+      </template>
     </template>
   </overlay-header-card>
 </template>
 
 <script>
-import ListTable from '../../components/ListTable.vue';
-import OverlayHeaderCard from '../../components/OverlayHeaderCard.vue';
+import DataTable from '@/components/DataTable.vue';
+import TabTable from '@/components/TabTable.vue';
+import OverlayHeaderCard from '@/components/OverlayHeaderCard.vue';
+import { ref } from '@vue/reactivity';
 
-const dataTableOptions = {
-  tableData: [
-    [1, 'Dakota Rice', '$36,738', 'Niger,Oud-Turnhout'],
+const dataTable = {
+  datas: [
+    [1, 'Dakota Rice', '$36,738', 'Niger', 'Oud-Turnhout'],
     [2, 'Minerva Hooper', '$23,738', 'Curaçao', 'Sinaai-Waas'],
     [3, 'Sage Rodriguez', '$56,142', 'Netherlands', 'Overland Park'],
     [4, 'Philip Chaney', '$38,735', 'Korea, South', 'Gloucester'],
@@ -44,25 +50,65 @@ const dataTableOptions = {
   ],
 };
 
-const listTableOptions = {
-  tableData: [],
-  columns: [
-    { caption: '', field: 'checkbox', type: '' },
-    { caption: '', field: 'sentence', type: 'string' },
-    { caption: '', field: 'buttons', type: '' },
+const tabs = {
+  sectionNames: ['bugs', 'website', 'server'],
+  sections: [
+    {
+      name: 'bugs',
+      datas: [
+        ['Sign contract for "What are conference organizers afraid of?'],
+        ['Lines From Great Russian Literature? Or E-mails From My Boss?'],
+        ['Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit'],
+      ],
+      columns: [{ caption: '', field: 'sentence', type: 'string' }],
+      useCheckbox: true,
+    },
+    {
+      name: 'website',
+      datas: [
+        ['Sign contract for "What are conference organizers afraid of?'],
+        ['Lines From Great Russian Literature? Or E-mails From My Boss?'],
+        ['Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit'],
+      ],
+      columns: [{ caption: '', field: 'sentence', type: 'string' }],
+      useCheckbox: true,
+    },
+    {
+      name: 'server',
+      datas: [
+        ['Sign contract for "What are conference organizers afraid of?'],
+        ['Lines From Great Russian Literature? Or E-mails From My Boss?'],
+        ['Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit'],
+      ],
+      columns: [{ caption: '', field: 'sentence', type: 'string' }],
+      useCheckbox: true,
+    },
   ],
 };
 
 export default {
-  components: { OverlayHeaderCard, ListTable },
+  components: { OverlayHeaderCard, DataTable, TabTable },
   name: 'ListTablesArea',
   setup() {
+    const activeTabSection = ref(tabs.sectionNames[0]);
+    const onTabClick = ({ target }) => {
+      const { tab } = target.dataset;
+      activeTabSection.value = tab;
+    };
+
     return {
-      dataTableOptions,
-      listTableOptions,
+      dataTable,
+      tabs,
+
+      activeTabSection,
+      onTabClick,
     };
   },
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.active {
+  background-color: #75bd79;
+}
+</style>

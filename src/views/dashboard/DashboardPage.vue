@@ -1,40 +1,37 @@
 <template>
-  <the-header>Dashboard</the-header>
+  <side-nav-layout>
+    <template #header> Dashboard </template>
 
-  <the-side-navbar />
+    <template #main>
+      <flex-conatiner>
+        <timeline-charts-area />
+      </flex-conatiner>
 
-  <div class="container">
-    <flex-conatiner>
-      <timeline-charts-area />
-    </flex-conatiner>
+      <flex-conatiner>
+        <status-cards-area />
+      </flex-conatiner>
 
-    <flex-conatiner>
-      <status-cards-area />
-    </flex-conatiner>
-
-    <flex-conatiner>
-      <list-tables-area />
-    </flex-conatiner>
-  </div>
+      <flex-conatiner>
+        <list-tables-area />
+      </flex-conatiner>
+    </template>
+  </side-nav-layout>
 </template>
 
 <script>
-import TheHeader from '../../components/layout/TheHeader.vue';
-import TheSideNavbar from '../../components/layout/TheSideNavbar.vue';
-
 import FlexConatiner from '../../components/layout/container/FlexConatiner.vue';
 import TimelineChartsArea from '../dashboard/TimelineChartsArea.vue';
 import StatusCardsArea from '../dashboard/StatusCardsArea.vue';
 import ListTablesArea from '../dashboard/ListTablesArea.vue';
+import SideNavLayout from '../../components/layout/SideNavLayout.vue';
 
 export default {
   components: {
-    TheHeader,
-    TheSideNavbar,
     FlexConatiner,
     TimelineChartsArea,
     StatusCardsArea,
     ListTablesArea,
+    SideNavLayout,
   },
   name: 'DashBoard',
   setup() {

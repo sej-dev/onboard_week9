@@ -1,9 +1,13 @@
 <template>
-  <overlay-header-card v-for="statusCard in statusCards" :key="statusCard.key">
-    <template #header> {{ statusCard.icon }} </template>
+  <overlay-header-card class="overlay-header-card" v-for="statusCard in statusCards" :style="statusCard.style" :key="statusCard.key">
+    <template #header>
+      <ev-icon class="header-icon" :icon="statusCard.icon" size="large" />
+    </template>
+
     <template #main>
       <component :is="statusCard.Main" />
     </template>
+
     <template #footer>
       <component :is="statusCard.Footer" />
     </template>
@@ -18,11 +22,17 @@ import functionalComponent from '@/utils/functionalComponent.js';
 const statusCards = [
   {
     key: 'Revenue',
-    icon: '',
+    style: {
+      header: {
+        backgroundColor: '#43a047',
+        minHeight: '70px',
+      },
+    },
+    icon: 'ev-icon-spark',
     Main: functionalComponent(
       <div>
         <span>Revenue</span>
-        <hr />
+        <br />
         <span>$34,245</span>
       </div>
     ),
@@ -30,11 +40,16 @@ const statusCards = [
   },
   {
     key: 'UsedSpace',
-    icon: '',
+    style: {
+      header: {
+        backgroundColor: '#fc9309',
+      },
+    },
+    icon: 'ev-icon-spark',
     Main: functionalComponent(
       <div>
         <span>Revenue</span>
-        <hr />
+        <br />
         <span>
           49/50<small>GB</small>
         </span>
@@ -44,11 +59,16 @@ const statusCards = [
   },
   {
     key: 'Revenue',
-    icon: '',
+    style: {
+      header: {
+        backgroundColor: '#e9423e',
+      },
+    },
+    icon: 'ev-icon-spark',
     Main: functionalComponent(
       <div>
         <span>Fixed Issues</span>
-        <hr />
+        <br />
         <span>75</span>
       </div>
     ),
@@ -56,11 +76,16 @@ const statusCards = [
   },
   {
     key: 'Revenue',
-    icon: '',
+    style: {
+      header: {
+        backgroundColor: '#0db5ca',
+      },
+    },
+    icon: 'ev-icon-spark',
     Main: functionalComponent(
       <div>
         <span>Folowers</span>
-        <hr />
+        <br />
         <span>+245</span>
       </div>
     ),
@@ -81,4 +106,19 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.overlay-header-card {
+  .header {
+    min-height: 70px;
+
+    .header-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      height: 100%;
+      width: 100%;
+    }
+  }
+}
+</style>

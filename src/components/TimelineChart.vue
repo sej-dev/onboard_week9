@@ -26,6 +26,8 @@ export default {
       series: {
         series1: {
           showLegend: false,
+          color: '#ffffff',
+          fillColor: '#ffffff',
         },
       },
       // TODO: 변동
@@ -53,6 +55,11 @@ export default {
           interval: props.interval,
           // TODO: 변동
           formatter: props.formatter,
+          axisLineColor: '#ffffff',
+          gridLineColor: '#ffffff',
+          labelStyle: {
+            color: '#ffffff',
+          },
         },
       ],
       axesY: [
@@ -60,8 +67,16 @@ export default {
           type: 'linear',
           showGrid: true,
           startToZero: true,
+          axisLineColor: '#ffffff',
+          gridLineColor: '#ffffff',
+          labelStyle: {
+            color: '#ffffff',
+          },
         },
       ],
+      labelStyle: {
+        color: '#ffffff',
+      },
     });
 
     return {

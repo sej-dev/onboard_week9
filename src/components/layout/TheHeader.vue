@@ -1,9 +1,13 @@
 <template>
-  <slot></slot>
+  <div>
+    <slot></slot>
+  </div>
 </template>
 
 <script>
-export default {};
+export default {
+  name: 'TheHeader',
+};
 </script>
 
-<style></style>
+<style scoped></style>

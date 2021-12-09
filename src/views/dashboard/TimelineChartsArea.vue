@@ -1,13 +1,15 @@
 <template>
-  <overlay-header-card v-for="chart in timelineCharts" :key="chart.key">
+  <overlay-header-card class="overlay-header-card" v-for="card in cards" :key="card.key" :style="card.style">
     <template #header>
-      <timeline-chart v-bind="chart.chartOptions" />
+      <timeline-chart v-bind="card.chartOptions" />
     </template>
+
     <template #main>
-      <component :is="chart.Main" />
+      <component :is="card.Main" />
     </template>
+
     <template #footer>
-      <component :is="chart.Footer" />
+      <component :is="card.Footer" />
     </template>
   </overlay-header-card>
 </template>
@@ -21,9 +23,14 @@ const time = dayjs().format('YYYY-MM-DD HH:mm:ss');
 
 import functionalComponent from '@/utils/functionalComponent.js';
 
-const timelineCharts = [
+const cards = [
   {
     key: 'DailySales',
+    style: {
+      header: {
+        backgroundColor: '#1dc0d4',
+      },
+    },
     chartOptions: {
       labels: [
         dayjs(time).subtract(6, 'day'),
@@ -54,6 +61,11 @@ const timelineCharts = [
   },
   {
     key: 'EmailSubscription',
+    style: {
+      header: {
+        backgroundColor: '#ee524f',
+      },
+    },
     chartOptions: {
       labels: [
         dayjs(time).subtract(6, 'month'),
@@ -81,6 +93,11 @@ const timelineCharts = [
   },
   {
     key: 'CompletedTasks',
+    style: {
+      header: {
+        backgroundColor: '#63b967',
+      },
+    },
     chartOptions: {
       labels: [
         dayjs(time).subtract(21, 'hour'),
@@ -114,10 +131,14 @@ export default {
   components: { OverlayHeaderCard, TimelineChart },
   setup() {
     return {
-      timelineCharts,
+      cards,
     };
   },
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+.overlay-header-card {
+  width: 30%;
+}
+</style>
