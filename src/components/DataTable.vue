@@ -1,5 +1,9 @@
 <template>
-  <ev-grid :columns="column" :rows="tableData" :option="options">
+  <ev-grid
+    :columns="column"
+    :rows="tableData"
+    :option="options"
+  >
     <template>
       <ev-checkbox />
     </template>

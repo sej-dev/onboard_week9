@@ -46,7 +46,12 @@ const statusCards = [
         <span class="status">$34,245</span>
       </div>
     ),
-    Footer: functionalComponent(<div>Last 24 Hours</div>),
+    Footer: functionalComponent(
+      <div>
+        <ev-icon icon="ev-icon-spark" />
+        Last 24 Hours
+      </div>
+    ),
   },
   {
     key: 'UsedSpace',
@@ -70,7 +75,7 @@ const statusCards = [
     Footer: functionalComponent(<div style={{ color: '#9c27b0' }}>Get More Space...</div>),
   },
   {
-    key: 'Revenue',
+    key: 'FixedIssues',
 
     header: {
       backgroundColor: '#e9423e',
@@ -89,7 +94,64 @@ const statusCards = [
     Footer: functionalComponent(<div>Tracked from Github</div>),
   },
   {
-    key: 'Revenue',
+    key: 'Folowers',
+
+    header: {
+      backgroundColor: '#0db5ca',
+      width: '30%',
+      position: 'left',
+    },
+
+    icon: 'ev-icon-spark',
+    Main: functionalComponent(
+      <div class="main-content">
+        <span class="name">Folowers</span>
+        <br />
+        <span class="status">+245</span>
+      </div>
+    ),
+    Footer: functionalComponent(<div> Just Updated</div>),
+  },
+  {
+    key: 'Folowers',
+
+    header: {
+      backgroundColor: '#0db5ca',
+      width: '30%',
+      position: 'left',
+    },
+
+    icon: 'ev-icon-spark',
+    Main: functionalComponent(
+      <div class="main-content">
+        <span class="name">Folowers</span>
+        <br />
+        <span class="status">+245</span>
+      </div>
+    ),
+    Footer: functionalComponent(<div> Just Updated</div>),
+  },
+  {
+    key: 'Folowers',
+
+    header: {
+      backgroundColor: '#0db5ca',
+      width: '30%',
+      position: 'left',
+    },
+
+    icon: 'ev-icon-spark',
+    Main: functionalComponent(
+      <div class="main-content">
+        <span class="name">Folowers</span>
+        <br />
+        <span class="status">+245</span>
+      </div>
+    ),
+    Footer: functionalComponent(<div> Just Updated</div>),
+  },
+  {
+    key: 'Folowers',
 
     header: {
       backgroundColor: '#0db5ca',
@@ -124,8 +186,6 @@ export default {
 
 <style lang="scss" scoped>
 .overlay-header-card {
-  width: 20%;
-
   .header {
     min-height: 70px;
 

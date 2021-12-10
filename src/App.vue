@@ -2,7 +2,16 @@
   <router-view />
 </template>
 
-<script></script>
+<script>
+// import RenderEx from './RenderEx.vue';
+
+export default {
+  name: 'App',
+  // components: {
+  //   RenderEx,
+  // },
+};
+</script>
 
 <style lang="scss">
 #app {

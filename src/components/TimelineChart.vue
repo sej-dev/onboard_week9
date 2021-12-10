@@ -1,5 +1,8 @@
 <template>
-  <ev-chart :data="chartData" :options="chartOptions" />
+  <ev-chart
+    :data="chartData"
+    :options="chartOptions"
+  />
 </template>
 
 <script>

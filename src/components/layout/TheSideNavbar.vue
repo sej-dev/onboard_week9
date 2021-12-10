@@ -2,11 +2,18 @@
   <div class="side-nav">
     <div class="logo-coantiner">
       <div class="logo-box">
-        <img src="https://demos.creative-tim.com/vue-material-dashboard/img/vue-logo.c2a605fb.png" alt="" />
+        <img
+          src="https://demos.creative-tim.com/vue-material-dashboard/img/vue-logo.c2a605fb.png"
+          alt=""
+        >
       </div>
       <span class="logo-name">VUE MD</span>
     </div>
-    <ev-menu v-model="menu" :items="menuItems" @change="onMenuChange" />
+    <ev-menu
+      v-model="menu"
+      :items="menuItems"
+      @change="onMenuChange"
+    />
   </div>
 </template>
 

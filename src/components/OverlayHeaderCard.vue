@@ -1,6 +1,9 @@
 <template>
   <div class="card">
-    <div class="header" :style="headerStyle">
+    <div
+      class="header"
+      :style="headerStyle"
+    >
       <slot name="header" />
     </div>
 
