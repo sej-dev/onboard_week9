@@ -3,11 +3,8 @@
     :columns="column"
     :rows="tableData"
     :option="options"
-  >
-    <template>
-      <ev-checkbox />
-    </template>
-  </ev-grid>
+    column-width="50"
+  />
 </template>
 
 <script>
@@ -52,4 +49,12 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+.ev-grid{
+  .table-body{
+    tr > td {
+      min-width: none !important;
+    }
+  }
+}
+</style>

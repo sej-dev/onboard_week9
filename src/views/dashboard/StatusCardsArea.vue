@@ -26,29 +26,26 @@
 <script>
 import OverlayHeaderCard from '@/components/OverlayHeaderCard.vue';
 
-import functionalComponent from '@/utils/functionalComponent.js';
-
 const statusCards = [
   {
     key: 'Revenue',
 
     header: {
-      backgroundColor: '#43a047',
-      width: '30%',
+      background: 'linear-gradient(60deg,#66bb6a,#43a047)',
       position: 'left',
     },
 
     icon: 'ev-icon-spark',
-    Main: functionalComponent(
-      <div class="main-content">
+    Main: () => (
+      <div class="main">
         <span class="name">Revenue</span>
         <br />
         <span class="status">$34,245</span>
       </div>
     ),
-    Footer: functionalComponent(
-      <div>
-        <ev-icon icon="ev-icon-spark" />
+    Footer: () => (
+      <div class="footer">
+        <ev-icon icon="ev-icon-time-line" />
         Last 24 Hours
       </div>
     ),
@@ -57,118 +54,74 @@ const statusCards = [
     key: 'UsedSpace',
 
     header: {
-      backgroundColor: '#fc9309',
-      width: '30%',
+      background: 'linear-gradient(60deg,#ffa726,#fb8c00)',
       position: 'left',
     },
 
     icon: 'ev-icon-spark',
-    Main: functionalComponent(
-      <div class="main-content">
+    Main: () => (
+      <div class="main">
         <span class="name">Revenue</span>
         <br />
         <span class="status">
-          49/50<small>GB</small>
+          49/50<small style={{ fontSize: '65%' }}>GB</small>
         </span>
       </div>
     ),
-    Footer: functionalComponent(<div style={{ color: '#9c27b0' }}>Get More Space...</div>),
+    Footer: () => (
+      <div style={{ color: '#9c27b0' }} class="footer">
+        <ev-icon icon="ev-icon-time-line" />
+        Get More Space...
+      </div>
+    ),
   },
   {
     key: 'FixedIssues',
 
     header: {
-      backgroundColor: '#e9423e',
-      width: '30%',
+      background: 'linear-gradient(60deg,#ef5350,#e53935)',
       position: 'left',
     },
 
     icon: 'ev-icon-spark',
-    Main: functionalComponent(
-      <div class="main-content">
+    Main: () => (
+      <div class="main">
         <span class="name">Fixed Issues</span>
         <br />
         <span class="status">75</span>
       </div>
     ),
-    Footer: functionalComponent(<div>Tracked from Github</div>),
+    Footer: () => (
+      <div class="footer">
+        <ev-icon icon="ev-icon-time-line" />
+        Tracked from Github
+      </div>
+    ),
   },
   {
     key: 'Folowers',
 
     header: {
-      backgroundColor: '#0db5ca',
-      width: '30%',
+      background: 'linear-gradient(60deg,#26c6da,#00acc1)',
       position: 'left',
     },
 
     icon: 'ev-icon-spark',
-    Main: functionalComponent(
-      <div class="main-content">
+    Main: () => (
+      <div class="main">
         <span class="name">Folowers</span>
         <br />
         <span class="status">+245</span>
       </div>
     ),
-    Footer: functionalComponent(<div> Just Updated</div>),
-  },
-  {
-    key: 'Folowers',
-
-    header: {
-      backgroundColor: '#0db5ca',
-      width: '30%',
-      position: 'left',
-    },
-
-    icon: 'ev-icon-spark',
-    Main: functionalComponent(
-      <div class="main-content">
-        <span class="name">Folowers</span>
-        <br />
-        <span class="status">+245</span>
+    Footer: () => (
+      <div class="footer">
+        <ev-icon icon="ev-icon-time-line" />
+        Just Updated
       </div>
     ),
-    Footer: functionalComponent(<div> Just Updated</div>),
   },
-  {
-    key: 'Folowers',
-
-    header: {
-      backgroundColor: '#0db5ca',
-      width: '30%',
-      position: 'left',
-    },
-
-    icon: 'ev-icon-spark',
-    Main: functionalComponent(
-      <div class="main-content">
-        <span class="name">Folowers</span>
-        <br />
-        <span class="status">+245</span>
-      </div>
-    ),
-    Footer: functionalComponent(<div> Just Updated</div>),
-  },
-  {
-    key: 'Folowers',
-
-    header: {
-      backgroundColor: '#0db5ca',
-      width: '30%',
-      position: 'left',
-    },
-
-    icon: 'ev-icon-spark',
-    Main: functionalComponent(
-      <div class="main-content">
-        <span class="name">Folowers</span>
-        <br />
-        <span class="status">+245</span>
-      </div>
-    ),
-    Footer: functionalComponent(<div> Just Updated</div>),
-  },
+  
 ];
 
 export default {
@@ -201,7 +154,7 @@ export default {
     }
   }
 
-  :deep(.main-content) {
+  :deep(.main) {
     text-align: right;
 
     .name {
@@ -210,8 +163,15 @@ export default {
 
     .status {
       color: black;
+      line-height: 1.5em;
       font-size: 1.5625rem;
       font-weight: 300;
+    }
+  }
+
+  :deep(.footer) {
+    i {
+      margin-right: 3px;
     }
   }
 }

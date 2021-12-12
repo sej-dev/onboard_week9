@@ -3,7 +3,19 @@
     :columns="column"
     :rows="tableData"
     :option="options"
-  />
+    :row-height="40"
+  >
+    <template #buttons>
+      <ev-icon
+        class="edit"
+        icon="ev-icon-registration"
+      />
+      <ev-icon
+        class="remove"
+        icon="ev-icon-s-close"
+      />
+    </template>
+  </ev-grid>
 </template>
 
 <script>
@@ -57,4 +69,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style scoped lang="scss">
+  .edit{
+    color: purple;
+  }
+  .remove{
+    color: red;
+  }
+  
+</style>

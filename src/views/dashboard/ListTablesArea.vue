@@ -1,7 +1,7 @@
 <template>
   <overlay-header-card
     class="overlay-header-card"
-    :header="{ backgroundColor: '#fd9d19' }"
+    :header="{ background: 'linear-gradient(60deg,#ffa726,#fb8c00)' }"
   >
     <template #header>
       <div>
@@ -19,7 +19,7 @@
 
   <overlay-header-card
     class="overlay-header-card"
-    :header="{ backgroundColor: '#5cb360' }"
+    :header="{ background: 'linear-gradient(60deg,#66bb6a,#43a047)' }"
   >
     <template #header>
       <ul
@@ -37,9 +37,11 @@
           class="tab-button"
         >
           <ev-button
+            :class="[activeTabSection === sectionName ? 'active' : '']"
             :data-tab="sectionName"
             type="text"
           >
+            <ev-icon icon="ev-icon-s-double-right" />
             {{ sectionName.toUpperCase() }}
           </ev-button>
         </li>
@@ -53,6 +55,7 @@
         <keep-alive>
           <tab-table
             v-if="activeTabSection === section.name"
+            class="tab-table"
             v-bind="section"
           />
         </keep-alive>
@@ -79,7 +82,7 @@ const dataTable = {
     { caption: 'ID', field: 'id', type: 'number', width: '10%' },
     { caption: 'Name', field: 'name', type: 'string', width: '20%' },
     { caption: 'Salary', field: 'salary', type: 'string', width: '20%' },
-    { caption: 'Country', field: 'country', type: 'string', width: '25%' },
+    { caption: 'Country', field: 'country', type: 'string', width: '20%' },
     { caption: 'City', field: 'city', type: 'string', width: '25%' },
   ],
 };
@@ -95,7 +98,10 @@ const tabs = {
         ['Lines From Great Russian Literature? Or E-mails From My Boss?'],
         ['Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit'],
       ],
-      columns: [{ caption: '', field: 'sentence', type: 'string', width: '70%' }],
+      columns: [
+        { caption: 'todo', field: 'todo', type: 'string', width: '70%' }, 
+        { caption: 'buttons', field: 'buttons', type: 'boolean', width: '30%' }
+      ],
       useCheckbox: true,
     },
     {
@@ -106,7 +112,10 @@ const tabs = {
         ['Lines From Great Russian Literature? Or E-mails From My Boss?'],
         ['Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit'],
       ],
-      columns: [{ caption: '', field: 'sentence', type: 'string' }],
+      columns: [
+        { caption: 'todo', field: 'todo', type: 'string', width: '70%' }, 
+        { caption: 'buttons', field: 'buttons', type: 'boolean', width: '30%' }
+      ],
       useCheckbox: true,
     },
     {
@@ -117,7 +126,10 @@ const tabs = {
         ['Lines From Great Russian Literature? Or E-mails From My Boss?'],
         ['Flooded: One year later, assessing what was lost and what was found when a ravaging rain swept through metro Detroit'],
       ],
-      columns: [{ caption: '', field: 'sentence', type: 'string' }],
+      columns: [
+        { caption: 'todo', field: 'todo', type: 'string', width: '70%' }, 
+        { caption: 'buttons', field: 'buttons', type: 'boolean', width: '30%' }
+      ],
       useCheckbox: true,
     },
   ],
@@ -147,12 +159,10 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.active {
-  background-color: #75bd79;
-}
-.overlay-header-card {
-  width: 45%;
 
+.overlay-header-card {
+  width: 40%;
+  
   h4 {
     font-weight: 300;
     font-size: 1.125rem;
@@ -166,11 +176,54 @@ export default {
     color: hsla(0, 0%, 100%, 0.62);
   }
 }
+
 .tab-names {
   display: flex;
+
+  button.active{
+    background-color: #7fc582;
+  }
 }
 
 .ev-button {
   color: #ffffff !important;
 }
+</style>
+
+<style lang="scss">
+  .ev-grid {
+    .table-header li {
+      min-width: auto !important;
+
+      span{
+        font-weight: 200;
+        color: #ff9800;
+      }
+    }
+    .table-body tbody {
+
+      td {
+        min-width: auto !important;
+        font-weight: 100;
+        font-size: 14px;
+      }
+      .cell {
+        display: inline-flex !important;
+      }
+    }
+  }
+  .tab-table .table-body {
+    overflow: hidden;
+
+    tbody td:nth-child(2) {
+      width: 70%;
+      height: 50px !important;
+      line-height: unset !important;
+      overflow-wrap: break-word !important;
+      
+      div {
+        white-space: initial;
+      }
+    }
+  }
 </style>

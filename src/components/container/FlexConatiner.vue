@@ -19,7 +19,7 @@ export default {
     },
   },
   setup(props) {
-    //console.dir(slots.default());
+
     return {
       flexDirection: props.direction,
     };
@@ -32,16 +32,13 @@ export default {
   display: flex;
 
   /* flex-flow: v-bind('flexDirection') wrap; */
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   flex-direction: v-bind('flexDirection');
-
+  
   gap: 20px;
-
-  margin-bottom: 50px;
 
   & > :deep(*) {
     flex-grow: 1;
-    flex-basis: 150px;
   }
 }
 </style>

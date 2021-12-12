@@ -9,82 +9,88 @@
       </div>
       <span class="logo-name">VUE MD</span>
     </div>
-    <ev-menu
-      v-model="menu"
-      :items="menuItems"
-      @change="onMenuChange"
-    />
+
+    <button
+      v-for="navigation in navigations"
+      :key="navigation.text"
+      :class="['nav-btn', activeNav === navigation.to ? 'active' : '']"
+      :data-to="navigation.to"
+      @click="onNavClick"
+    >
+      <ev-icon 
+        :icon="navigation.icon"
+        size="large"
+      />
+      {{ navigation.text }}
+    </button>
   </div>
 </template>
 
 <script>
 import { ref } from 'vue';
-import { useRouter } from 'vue-router';
+import { useRouter } from 'vue-router'
+
+const navigations = [
+  {
+    text: 'Dashboard',
+    to: 'Dashboard',
+    icon: 'ev-icon-arrow-right2',
+  },
+  {
+    text: 'User Profile',
+    to: 'UserProfile',
+    icon: 'ev-icon-arrow-right2',
+  },
+  {
+    text: 'Table List',
+    to: '#',
+    icon: 'ev-icon-arrow-right2',
+  },
+  {
+    text: 'Typography',
+    to: '#',
+    icon: 'ev-icon-arrow-right2',
+  },
+  {
+    text: 'Icons',
+    to: '#',
+    icon: 'ev-icon-arrow-right2',
+  },
+  {
+    text: 'Maps',
+    to: '#',
+    icon: 'ev-icon-arrow-right2',
+  },
+  {
+    text: 'Notifications',
+    to: '#',
+    icon: 'ev-icon-arrow-right2',
+  },
+  {
+    text: 'Upgrade To PRO',
+    to: '#',
+    icon: 'ev-icon-arrow-right2',
+  },
+];
 
 export default {
   // ev-menu를 사용해서 side navigation bar + router
   name: 'TheNavbar',
   setup() {
-    const menu = ref('menu');
-    const menuItems = ref([
-      {
-        text: 'Dashoboard',
-        value: 'Dashoboard',
-        routeName: 'Dashboard',
-        iconClass: 'ev-icon-spark',
-      },
-      {
-        text: 'User Profile',
-        value: 'UserProfile',
-        routeName: 'UserProfile',
-        iconClass: 'ev-icon-spark',
-      },
-      {
-        text: 'Table List',
-        value: 'TableList',
-        iconClass: 'ev-icon-spark',
-      },
-      {
-        text: 'Typography',
-        value: 'Typography',
-        iconClass: 'ev-icon-spark',
-      },
-      {
-        text: 'Icons',
-        value: 'Icons',
-        iconClass: 'ev-icon-spark',
-      },
-      {
-        text: 'Maps',
-        value: 'Maps',
-        iconClass: 'ev-icon-spark',
-      },
-      {
-        text: 'Notifications',
-        value: 'Notifications',
-        iconClass: 'ev-icon-spark',
-      },
-      {
-        text: 'Upgrade To PRO',
-        value: 'UpgradeToPRO',
-        iconClass: 'ev-icon-spark',
-      },
-    ]);
-
     const router = useRouter();
+    const activeNav = ref(navigations[0].text);
 
-    const onMenuChange = (curMenu, prevMenu) => {
-      if (curMenu.value !== prevMenu.value && curMenu.routeName)
-        router.push({
-          name: curMenu.routeName,
-        });
+    const onNavClick = ({ target }) => {
+      const { to } = target.dataset;
+      if(to === '#') return;
+      activeNav.value = to;
+      router.push({ name: to });
     };
 
     return {
-      menu,
-      menuItems,
-
-      onMenuChange,
+      navigations,
+      activeNav,
+      onNavClick
     };
   },
 };
@@ -93,6 +99,22 @@ export default {
 <style scoped lang="scss">
 .side-nav {
   padding: 20px;
+  background-color: #3e464c;
+
+  .nav-btn {
+
+    width: 100%;
+    height: 50px;
+    text-align: left;
+    padding: 10px;
+    margin: 10px 15px 0px 10px;
+    color: #ffffff;
+    background-color: #3e464c;
+
+    &.active {
+      background-color: #4caf50;
+    }
+  }
 
   .logo-coantiner {
     display: flex;
@@ -112,7 +134,8 @@ export default {
 
       img {
         width: 55%;
-        vertical-align: baseline;
+        vertical-align: -webkit-baseline-middle;
+        height: auto;
       }
     }
 

@@ -2,6 +2,8 @@
   <the-side-navbar class="side-navbar" />
 
   <div class="panel-right">
+    <fixed-icon />
+
     <the-header class="header">
       <slot name="header" />
     </the-header>
@@ -18,10 +20,11 @@
 import TheFooter from '@/components/layout/TheFooter.vue';
 import TheHeader from '@/components/layout/TheHeader.vue';
 import TheSideNavbar from '@/components/layout/TheSideNavbar.vue';
+import FixedIcon from '@/components/FixedIcon.vue';
 
 export default {
-  components: { TheFooter, TheHeader, TheSideNavbar },
   name: 'SideNavLayout',
+  components: { TheFooter, TheHeader, TheSideNavbar, FixedIcon },
 };
 </script>
 
@@ -44,10 +47,6 @@ export default {
     color: #495057;
 
     min-height: 56px;
-    padding: 10px 15px;
-  }
-
-  .main {
   }
 }
 </style>

@@ -13,7 +13,7 @@ const routes = [
     component: DashboardPage,
   },
   {
-    path: '/userProfile',
+    path: '/user-profile',
     name: 'UserProfile',
     component: UserProfilePage,
   },

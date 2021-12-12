@@ -11,7 +11,10 @@
       <slot name="main" />
     </div>
 
-    <div class="footer">
+    <div 
+      class="footer"
+      :style="footerStyle"
+    >
       <slot name="footer" />
     </div>
   </div>
@@ -53,11 +56,12 @@ export default {
     */
   },
 
-  setup(props) {
+  setup(props, {slots}) {
+
     const headerStyleProps = computed(() => ({
       position: 'center',
       width: '',
-      backgroundColor: 'black',
+      background: '',
       ...props.header,
     }));
 
@@ -65,18 +69,24 @@ export default {
       const position = {
         left: { float: 'left' },
         right: { float: 'right' },
-        center: { marginLeft: 'auto', marginRight: 'auto' },
+        // center: { marginLeft: 'auto', marginRight: 'auto' },
       };
 
       return {
         ...position[headerStyleProps.value.position],
         width: headerStyleProps.value.width,
-        backgroundColor: headerStyleProps.value.backgroundColor,
+        background: headerStyleProps.value.background,
       };
+    });
+
+    const footerStyle = computed(() => {
+      if(slots.footer) return { borderTop: `1px solid #eee` };
+      else return {};
     });
 
     return {
       headerStyle,
+      footerStyle
     };
   },
 };
@@ -88,14 +98,13 @@ export default {
   background-color: #ffffff;
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
 
-  padding-right: 15px;
-  padding-left: 15px;
+  border-radius: 3px;
 
   .header {
-    margin-top: -20px;
-    color: #ffffff;
-
+    margin: -20px 15px 0;
+    border-radius: 3px;
     padding: 15px;
+    color: #ffffff;
   }
 
   .main {
@@ -105,8 +114,6 @@ export default {
   .footer {
     margin: 0 20px 10px;
     padding: 10px 0 10px 0;
-    border-top: 1px solid #eee;
-
     font-size: 12px;
   }
 }

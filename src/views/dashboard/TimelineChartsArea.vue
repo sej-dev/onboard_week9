@@ -26,13 +26,11 @@ import TimelineChart from '@/components/TimelineChart.vue';
 import dayjs from 'dayjs';
 const time = dayjs().format('YYYY-MM-DD HH:mm:ss');
 
-import functionalComponent from '@/utils/functionalComponent.js';
-
 const cards = [
   {
     key: 'DailySales',
     header: {
-      backgroundColor: '#1dc0d4',
+      background: 'linear-gradient(60deg,#26c6da,#00acc1)',
     },
     chartOptions: {
       type: 'line',
@@ -52,20 +50,25 @@ const cards = [
         return day;
       },
     },
-    Main: functionalComponent(
-      <div class="main-content">
+    Main: () => (
+      <div class="main">
         <h4 class="title">Daily Sales</h4>
         <p class="description">
           <span style={{ color: '#4caf50' }}>55%</span> increase in today sales.
         </p>
       </div>
     ),
-    Footer: functionalComponent(<div>updated 4 minutes ago</div>),
+    Footer: () => (
+      <div class="footer">
+        <ev-icon icon="ev-icon-time-line" />
+        updated 4 minutes ago
+      </div>
+    ),
   },
   {
     key: 'EmailSubscription',
     header: {
-      backgroundColor: '#ee524f',
+      background: 'linear-gradient(60deg,#ef5350,#e53935)',
     },
     chartOptions: {
       type: 'bar',
@@ -86,22 +89,27 @@ const cards = [
       data: [2, 4, 8, 1, 4, 7, 4, 1, 5, 8, 22, 1],
       interval: 'month',
       formatter: (value) => {
-        const day = dayjs(value).format('MMM').substring(0, 2).toUpperCase();
+        const day = dayjs(value).format('MMM');
         return day;
       },
     },
-    Main: functionalComponent(
-      <div class="main-content">
+    Main: () => (
+      <div class="main">
         <h4 class="title">Email Subscription</h4>
         <p class="description">Last Campaign Performance</p>
       </div>
     ),
-    Footer: functionalComponent(<div>updated 10 days ago</div>),
+    Footer: () => (
+      <div class="footer">
+        <ev-icon icon="ev-icon-time-line" />
+        updated 10 days ago
+      </div>
+    ),
   },
   {
     key: 'CompletedTasks',
     header: {
-      backgroundColor: '#63b967',
+      background: 'linear-gradient(60deg,#66bb6a,#43a047)',
     },
     chartOptions: {
       type: 'line',
@@ -122,13 +130,18 @@ const cards = [
         return day;
       },
     },
-    Main: functionalComponent(
-      <div class="main-content">
+    Main: () => (
+      <div class="main">
         <h4 class="title">Completed Tasks</h4>
         <p class="description">Last Campaign Performance</p>
       </div>
     ),
-    Footer: functionalComponent(<div>campaign sent 26 minutes ago</div>),
+    Footer: () => (
+      <div class="footer">
+        <ev-icon icon="ev-icon-time-line" />
+        campaign sent 26 minutes ago
+      </div>
+    ),
   },
 ];
 
@@ -147,7 +160,7 @@ export default {
 .overlay-header-card {
   width: 30%;
 
-  :deep(.main-content) {
+  :deep(.main) {
     .title {
       color: black;
       margin-bottom: 10px;
@@ -155,6 +168,12 @@ export default {
 
     .description {
       font-size: 14px;
+    }
+  }
+
+  :deep(.footer) {
+    i {
+      margin-right: 3px;
     }
   }
 }

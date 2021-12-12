@@ -13,9 +13,11 @@ const componentOptionRender = {
   },
   render() {
     /**
-     * @param1 {String | Object | Function} tag(HTML 태그 이름, 컴포넌트...)
-     * @param2 {Object} props
-     * @param3 {String | Array | Object} children
+     * @param {String | Object | Function} tag(HTML 태그 이름, 컴포넌트...)
+     * @param {Object} props
+     * @param {String | Array | Object} children
+     * 
+     * @returns {VNode}
      */
     return h('h1', {}, this.hello);
   },
