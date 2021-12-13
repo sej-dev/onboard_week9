@@ -69,7 +69,7 @@ export default {
       const position = {
         left: { float: 'left' },
         right: { float: 'right' },
-        // center: { marginLeft: 'auto', marginRight: 'auto' },
+        //center: { marginLeft: 'auto', marginRight: 'auto' },
       };
 
       return {
@@ -97,7 +97,6 @@ export default {
   color: #999;
   background-color: #ffffff;
   box-shadow: 0 1px 4px 0 rgb(0 0 0 / 14%);
-
   border-radius: 3px;
 
   .header {

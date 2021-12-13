@@ -23,18 +23,35 @@
 
 export default {
   name: 'TheFooter',
-  components: {
-    
-  }
 };
 </script>
 
 <style lang="scss" scoped>
-  nav{
-    display: inline-block;
+  footer{
+    display: flex;
+    justify-content: space-between;
+    padding: 0 30px 0 30px;
+    margin-top: 50px;
     font-size: 14px;
+
+    nav{
+      display: inline-block;
+      text-transform: uppercase;
+    
+      li{
+        display: inline-block;
+        margin-right: 10px;
+        
+        a{
+          font-weight: 500;
+          font-size: 12px;
+        }
+      }
+    }
+    
+    a:hover{
+      color: #9c27b0;
+    }
   }
-  a:hover{
-    color: #9c27b0;
-  }
+  
 </style>

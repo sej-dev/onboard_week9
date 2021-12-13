@@ -17,10 +17,10 @@
       :data-to="navigation.to"
       @click="onNavClick"
     >
-      <ev-icon 
+      <!-- <ev-icon 
         :icon="navigation.icon"
         size="large"
-      />
+      /> -->
       {{ navigation.text }}
     </button>
   </div>

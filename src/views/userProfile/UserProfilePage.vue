@@ -68,17 +68,19 @@
                 type="text"
               />
             </flex-conatiner>
+            <label class="input-me">About Me</label>
             <ev-text-field
               v-model="inputs.aboutMe"
               type="textarea"
             />
-            <ev-button>UPDATE PROFILE</ev-button>
+            <ev-button class="btn-update">
+              UPDATE PROFILE
+            </ev-button>
           </template>
         </overlay-header-card>
 
         <overlay-header-card
           class="overlay-header-card profile"
-          :header="businessCard.header"
         >
           <template #header>
             <img
@@ -88,21 +90,22 @@
           </template>
 
           <template #main>
-            <div class="md-card-content">
-              <h6 class="category text-gray">
-                CEO / Co-Founder
-              </h6>
-              <h4 class="card-title">
-                Alec Thompson
-              </h4>
-              <p class="card-description">
-                Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love
-                Rick Owens’ bed design but the back is...
-              </p>
-              <ev-button shape="radius">
-                UPDATE PROFILE
-              </ev-button>
-            </div>
+            <h6 class="title">
+              CEO / Co-Founder
+            </h6>
+            <h4 class="name">
+              Alec Thompson
+            </h4>
+            <p class="description">
+              Don't be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love
+              Rick Owens’ bed design but the back is...
+            </p>
+            <ev-button
+              shape="radius"
+              class="btn-follow"
+            >
+              FOLLOW
+            </ev-button>
           </template>
         </overlay-header-card>
       </flex-conatiner>
@@ -115,13 +118,6 @@ import FlexConatiner from '@/components/container/FlexConatiner.vue';
 import LeftSideNavLayout from '@/components/layout/page/LeftSideNavLayout.vue';
 import OverlayHeaderCard from '@/components/OverlayHeaderCard.vue';
 import { reactive } from 'vue';
-
-const businessCard = {
-  header: {
-    backgroundColor: 'transparent',
-    width: '130px',
-  },
-};
 
 export default {
   name: 'UserProfilePage',
@@ -145,8 +141,6 @@ export default {
     });
     
     return {
-      businessCard,
-
       inputs
     };
   },
@@ -154,19 +148,78 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.overlay-header-card {
+.flex-container{
+  .ev-text-field{
+    margin: 0 10px 20px 10px;
+  }
   
+  label.input-me{
+    font-size: .6875rem;
+    margin-left: 15px;
+  }
+
+  :deep(textarea) {
+    padding: 10px 16px;
+    resize: auto;
+  }
+}
+
+.overlay-header-card {
+
   &.edit{
-    width: 70%;
+
+    .category{
+      color: hsla(0,0%,100%,.62);
+      font-size: 14px;
+      margin-top: 10px;
+    }
+
+    .btn-update{
+      background-color: #4caf50 !important;
+      border: none !important;
+      display: block;
+      margin-left: auto; 
+    }
   }
 
   &.profile{
-    
+    width: 30%;
+
     .header-img {
       max-width: 130px;
       max-height: 130px;
       border-radius: 50%;
-      margin-top: -20px;
+      margin-top: -40px;
+
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .title{
+      text-align: center;
+      font-size: .75rem;
+      margin-bottom: 10px;
+    }
+    .name{
+      text-align: center;
+      font-size: 1.125rem; 
+      color: black;
+      margin-bottom: 10px;
+    }
+    .description{
+      text-align: center;
+      font-size: 14px;
+      line-height: 22px;
+      margin-bottom: 20px;
+    }
+
+    .btn-follow{
+      background-color: #4caf50 !important;
+      border: none !important;
+      display: block;
+      margin: auto;
+    
     }
   }  
 }

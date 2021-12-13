@@ -34,14 +34,16 @@ export default {
   color: #ffffff;
 
   display: inline-block;
-  width: 260px;
+  max-width: 260px;
+  min-width: 260px;
 }
 .panel-right {
   padding: 25px;
   background-color: #eeeeee;
 
   display: inline-block;
-  width: calc(100% - 260px);
+  width: calc(100% - 400px);
+  min-height: 100vh;
 
   .header {
     color: #495057;
